@@ -36,3 +36,27 @@ code {
   transition: opacity 350ms ease-out;
   opacity:0;
 }
+
+.note-enter-active {
+  animation: note .7s ease-in reverse;
+}
+
+.note-exit-active {
+  animation: note .7s ease-out forwards;
+}
+
+@keyframes note {
+  0% {
+    transform: translateX(0);
+  }
+
+  30% {
+    opacity: .7;
+    transform: translateX(30px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+}
