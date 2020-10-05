@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react';
 import { Form } from '../components/Form';
 import {NotesList} from '../components/NotesList';
 import {FirebaseContext} from '../context/firebase/FirebaseContext';
+import {Loader} from '../components/Loader'
 
 export const Home = () => {
 
@@ -18,7 +19,8 @@ export const Home = () => {
       <>
          <Form />
          <br />
-         <NotesList notes={notes} />
+
+         { loading ? <Loader /> :  <NotesList notes={notes} onRemove={removeNote} /> }
       </>
   );
 };

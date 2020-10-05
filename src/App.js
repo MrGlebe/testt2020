@@ -16,8 +16,8 @@ function App() {
             <div className="container pt-4">
               <Alert />
               <Switch>
-                <Route path={'/'} component={Home} exact />
-                <Route path={'/about'} component={About} exact />
+                <Route path={'/'} component={ Home } exact />
+                <Route path={'/about'} component={ About } exact />
               </Switch>
             </div>
           </BrowserRouter>
