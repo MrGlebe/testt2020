@@ -1,17 +1,27 @@
 import React, {useState, useContext} from 'react';
 import {AlertContext} from '../context/alert/alertContext';
+import {FirebaseContext} from '../context/firebase/FirebaseContext';
 
 export const Form = () => {
 
     const [value, setValue] = useState('');
-    const {show} = useContext(AlertContext);
+    const { show } = useContext(AlertContext);
+    const { addNote } = useContext(FirebaseContext);
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
 
         if (value.trim()) {
-            show('Заметка создана', 'success');
-            setValue('');
+
+            try {
+                await addNote(value.trim());
+                show('Заметка создана', 'success');
+                setValue('');
+            } catch(e) {
+
+                (show('Ошибка создания заметки', 'danger'));
+            }
+
         } else {
             show('Введите заметку');
         }
